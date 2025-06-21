@@ -72,8 +72,7 @@
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 1.5rem;
-  align-items: start;
-  min-height: 300px;
+  align-items: stretch;
 }
 
 .dashboard-left {
@@ -83,8 +82,8 @@
 }
 
 .dashboard-right {
-  position: sticky;
-  top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .current-weather h3 {
