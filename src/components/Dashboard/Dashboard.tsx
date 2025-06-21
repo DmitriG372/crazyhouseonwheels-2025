@@ -21,6 +21,7 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showWeatherModal, setShowWeatherModal] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
+  const [locationName, setLocationName] = useState<string>('Sinu asukoht');
 
   const getCurrentDay = () => {
     const today = new Date();
@@ -36,9 +37,15 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
   useEffect(() => {
     if ('geolocation' in navigator) {
       const watchId = navigator.geolocation.watchPosition(
-        (position) => {
-          setCurrentLocation([position.coords.latitude, position.coords.longitude]);
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          setCurrentLocation([lat, lng]);
           setLocationError(null);
+          
+          // Get location name
+          const name = await getLocationName(lat, lng);
+          setLocationName(name);
         },
         (error) => {
           console.error('Location error:', error);
@@ -70,6 +77,42 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
 
   const handleWeatherClick = () => {
     setShowWeatherModal(true);
+  };
+
+  const getLocationName = async (lat: number, lng: number) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=et,en`
+      );
+      
+      if (!response.ok) {
+        throw new Error('Reverse geocoding failed');
+      }
+      
+      const data = await response.json();
+      
+      // Try to get the most relevant location name
+      const city = data.address?.city || 
+                   data.address?.town || 
+                   data.address?.village || 
+                   data.address?.municipality ||
+                   data.address?.county;
+      
+      const country = data.address?.country;
+      
+      if (city && country) {
+        return `${city}, ${country}`;
+      } else if (city) {
+        return city;
+      } else if (country) {
+        return country;
+      } else {
+        return 'Sinu asukoht';
+      }
+    } catch (error) {
+      console.error('Error getting location name:', error);
+      return 'Sinu asukoht';
+    }
   };
 
   return (
@@ -132,7 +175,7 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
                 <div className="current-weather fade-in hover-lift" style={{animationDelay: '0.6s'}}>
                   <Weather 
                     location={currentLocation} 
-                    locationName="Sinu asukoht"
+                    locationName={locationName}
                     onWeatherClick={handleWeatherClick}
                   />
                 </div>
@@ -159,7 +202,7 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
       {showWeatherModal && currentLocation && (
         <WeatherModal 
           location={currentLocation}
-          locationName="Sinu asukoht"
+          locationName={locationName}
           onClose={() => setShowWeatherModal(false)}
         />
       )}
