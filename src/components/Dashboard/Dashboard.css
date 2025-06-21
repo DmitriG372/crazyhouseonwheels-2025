@@ -73,11 +73,13 @@
   grid-template-columns: 1fr 280px;
   gap: 1.5rem;
   align-items: start;
+  min-height: 300px;
 }
 
 .dashboard-left {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .dashboard-right {
