@@ -130,7 +130,6 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
             <div className="dashboard-right">
               {currentLocation && (
                 <div className="current-weather fade-in hover-lift" style={{animationDelay: '0.6s'}}>
-                  <h3>Praegune asukoht</h3>
                   <Weather 
                     location={currentLocation} 
                     locationName="Sinu asukoht"
