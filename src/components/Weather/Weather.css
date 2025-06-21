@@ -1,12 +1,19 @@
 .weather-widget {
-  background: var(--weather-bg);
-  color: var(--weather-text);
-  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.5s ease;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid var(--weather-border);
-  margin-bottom: 2rem;
 }
 
 .weather-widget:hover {
@@ -91,40 +98,36 @@
 .weather-description {
   font-size: 0.95rem;
   color: var(--text-secondary);
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .weather-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: 2rem 1fr auto; /* icon, label, value */
+  align-items: center;
+  gap: 0.5rem 1rem; /* row-gap, column-gap */
   margin: 1rem 0;
 }
 
 .weather-detail-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius);
-  font-size: 0.875rem;
+  display: contents; /* Treat children as direct grid items of the parent */
 }
 
 .detail-icon {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  justify-self: center;
 }
 
 .detail-label {
-  flex: 1;
   text-align: left;
-  margin-left: 0.5rem;
   color: var(--text-secondary);
 }
 
 .detail-value {
   font-weight: 600;
   color: var(--text-primary);
+  justify-self: end;
 }
 
 .weather-footer {

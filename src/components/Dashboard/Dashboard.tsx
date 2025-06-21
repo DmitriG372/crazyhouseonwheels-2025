@@ -123,6 +123,14 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
             <div className="header-text">
               <h1>🚐 CrazyHouseOnWheels 2025</h1>
               <p>Pere reisipäevik ja marsruudi jälgija</p>
+              <div className="family-list">
+                <span>👨‍💻 Dima</span>
+                <span>👩‍🎨 Maria</span>
+                <span>🤸‍♀️ Ariana</span>
+                <span>🎨 Gloria</span>
+                <span>🐶 Sanja</span>
+                <span>🐕 Vaflja</span>
+              </div>
             </div>
             <button 
               className="admin-btn"

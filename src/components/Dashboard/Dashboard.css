@@ -31,6 +31,22 @@
   font-size: 1.1rem;
 }
 
+.family-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.family-list span {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.family-list span:hover {
+  opacity: 1;
+}
+
 .admin-btn {
   background: rgba(255, 255, 255, 0.2);
   color: white;
@@ -72,7 +88,7 @@
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .dashboard-left {
