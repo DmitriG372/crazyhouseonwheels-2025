@@ -127,7 +127,6 @@ const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClic
     <div className={`weather-widget ${timeOfDay}`} onClick={onWeatherClick}>
       <div className="weather-header">
         <h3 className="weather-location">{locationName}</h3>
-        <div className="weather-time">{new Date().toLocaleTimeString('et-EE', { hour: '2-digit', minute: '2-digit' })}</div>
       </div>
       
       <div className="weather-main">
@@ -159,9 +158,6 @@ const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClic
         </div>
       </div>
       
-      <div className="weather-footer">
-        <span className="weather-hint">📊 Vajuta detailseks prognoosiks</span>
-      </div>
     </div>
   );
 };
