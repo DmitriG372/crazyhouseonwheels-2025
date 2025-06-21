@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# CrazyHouseOnWheels 2025 - Reisipäevik
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mobiilisõbralik web-app pere reisipäeviku ja marsruudi jälgimiseks.
 
-## Available Scripts
+## Funktsioonid
 
-In the project directory, you can run:
+### 📍 Interaktiivne kaart
+- Kogu reisi marsruut Leaflet kaardil
+- Reaalajas kasutaja asukoht (GPS)
+- Päevade algus- ja lõpp-punktid
 
-### `npm start`
+### ☁️ Ilmateade
+- Hetke asukoha ilmateade
+- Iga sihtkoha ilmateade
+- Open-Meteo API integratsioon
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 📆 Päevade kiirvalik
+- Kõik reisipäevad ülevaatlikult
+- Päeva number, kuupäev ja asukoht
+- Praeguse päeva märgistus
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 📊 Reisi edenemine
+- Visuaalne edenemise riba
+- Päevade arv ja protsent
+- Motiveerivad sõnumid
 
-### `npm test`
+### 📱 Mobiilisõbralik
+- Reageeriv disain
+- Töötab iPadis ja telefonides
+- Kiire ja kerge
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tehnoloogia
 
-### `npm run build`
+- React + TypeScript
+- Leaflet kaartide jaoks
+- Open-Meteo ilma API
+- CSS muutujad teemade jaoks
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Arendamine
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Installi sõltuvused
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Käivita arendusserver
+npm start
 
-### `npm run eject`
+# Ehita tootmise versioon
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Värvipalett
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Põhivärv: Oliiviroheline (#708238)
+- Taust: Off-white (#fafaf8)
+- Tekst: Tumehall (#2c2c2c)

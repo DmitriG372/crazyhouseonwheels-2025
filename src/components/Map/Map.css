@@ -1,0 +1,115 @@
+.map-container {
+  width: 100%;
+  height: 350px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+}
+
+.custom-marker.selected {
+  transform: scale(1.2);
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(112, 130, 56, 0.3);
+}
+
+.custom-marker .marker-content {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
+.custom-marker.end {
+  background: var(--primary-color);
+}
+
+.custom-marker.end .marker-content {
+  color: white;
+}
+
+.current-location-marker {
+  position: relative;
+}
+
+.current-location-marker .pulse {
+  width: 20px;
+  height: 20px;
+  background: #4285F4;
+  border-radius: 50%;
+  position: relative;
+}
+
+.current-location-marker .pulse::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #4285F4;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.car-marker {
+  position: relative;
+  z-index: 1000;
+}
+
+.car-icon {
+  font-size: 24px;
+  text-align: center;
+  line-height: 30px;
+  transition: transform 0.5s ease;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  animation: carBounce 2s ease-in-out infinite;
+}
+
+@keyframes carBounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.leaflet-popup-content {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 300px;
+    margin-bottom: 1.5rem;
+  }
+}

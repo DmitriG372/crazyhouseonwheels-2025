@@ -1,0 +1,367 @@
+.day-view-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.day-view-content {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+.day-view-header {
+  margin-bottom: 2rem;
+}
+
+.day-view-header h2 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.distance,
+.duration {
+  background: var(--background);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+}
+
+.maps-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.maps-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.day-view-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+}
+
+.schedule-section,
+.stops-section,
+.accommodation-section {
+  margin-bottom: 2rem;
+}
+
+.schedule-section h3,
+.stops-section h3,
+.accommodation-section h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.schedule-timeline {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 2rem;
+  bottom: -1.5rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-time {
+  font-weight: 600;
+  color: var(--primary-color);
+  min-width: 60px;
+  margin-right: 1rem;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.stops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stop-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--background);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+}
+
+.stop-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stop-type {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.link-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.link-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.link-button.small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.special-activities-section,
+.day-notes-section {
+  margin-bottom: 2rem;
+}
+
+.special-activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.special-activity-item {
+  background: var(--background);
+  padding: 1rem;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary-color);
+}
+
+.special-activity-item h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.special-activity-item p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.day-notes {
+  background: var(--background);
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.day-notes p {
+  margin-bottom: 0.5rem;
+}
+
+.accommodation-details {
+  background: var(--background);
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+.accommodation-image,
+.activity-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.accommodation-details h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.accommodation-details p {
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.contact-info {
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+}
+
+.contact-info div {
+  margin-bottom: 0.25rem;
+}
+
+.price-info {
+  margin: 0.75rem 0;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.amenity-tag {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+}
+
+.accommodation-notes {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.accommodation-notes p {
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .day-view-content {
+    padding: 1.5rem;
+    max-height: 95vh;
+  }
+  
+  .day-view-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .route-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .timeline-time {
+    min-width: 50px;
+    font-size: 0.9rem;
+  }
+  
+  .timeline-content {
+    font-size: 0.9rem;
+  }
+  
+  .accommodation-image,
+  .activity-image {
+    height: 150px;
+  }
+}
