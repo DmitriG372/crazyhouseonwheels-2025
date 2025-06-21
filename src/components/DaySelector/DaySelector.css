@@ -3,7 +3,6 @@
   border-radius: var(--radius-lg);
   padding: 1rem;
   box-shadow: var(--shadow);
-  margin-bottom: 1.5rem;
 }
 
 .day-selector-container h3 {
