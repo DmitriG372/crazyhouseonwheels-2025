@@ -115,6 +115,7 @@
   display: grid;
   grid-template-columns: 1fr 350px;
   gap: 2rem;
+  align-items: start;
 }
 
 .schedule-section,
@@ -332,6 +333,14 @@
 
 .accommodation-notes p {
   margin-bottom: 0.25rem;
+}
+
+.day-view-sidebar .weather-widget {
+  height: auto;
+}
+
+.day-view-sidebar .weather-widget .weather-details {
+  display: none;
 }
 
 @media (max-width: 768px) {

@@ -21,9 +21,8 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-lg);
-  width: 100%;
-  max-width: 800px;
-  max-height: 90vh;
+  width: 280px;
+  height: 200px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   display: flex;
