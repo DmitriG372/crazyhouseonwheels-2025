@@ -123,7 +123,8 @@ const DayView: React.FC<DayViewProps> = ({ day, onClose }) => {
           <div className="day-view-sidebar">
             <Weather 
               location={day.endLocation.coordinates} 
-              locationName={day.endLocation.name} 
+              locationName={day.endLocation.name}
+              targetDate={day.date}
             />
 
             <div className="accommodation-section">

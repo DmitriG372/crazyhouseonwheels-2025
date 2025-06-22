@@ -12,6 +12,7 @@ interface WeatherProps {
   location: [number, number];
   locationName: string;
   onWeatherClick?: () => void;
+  targetDate?: string; // Optional date for forecast
 }
 
 const weatherDescriptions: { [key: number]: { text: string; icon: string } } = {
@@ -41,7 +42,7 @@ const weatherDescriptions: { [key: number]: { text: string; icon: string } } = {
   99: { text: 'Äike rahe', icon: '⛈️' },
 };
 
-const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClick }) => {
+const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClick, targetDate }) => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -77,22 +78,49 @@ const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClic
         setError(null);
         
         const [lat, lon] = location;
-        const response = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m&timezone=auto`
-        );
         
-        if (!response.ok) {
-          throw new Error('Ilmaandmete laadimine ebaõnnestus');
+        if (targetDate) {
+          // Forecast for specific date
+          const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weather_code,wind_speed_10m_max&timezone=auto&start_date=${targetDate}&end_date=${targetDate}`
+          );
+          
+          if (!response.ok) {
+            throw new Error('Ilmaandmete laadimine ebaõnnestus');
+          }
+          
+          const data = await response.json();
+          
+          if (data.daily && data.daily.temperature_2m_max.length > 0) {
+            const avgTemp = Math.round((data.daily.temperature_2m_max[0] + data.daily.temperature_2m_min[0]) / 2);
+            setWeather({
+              temperature: avgTemp,
+              weatherCode: data.daily.weather_code[0],
+              windSpeed: Math.round(data.daily.wind_speed_10m_max[0]),
+              humidity: undefined, // Daily forecast doesn't include humidity
+            });
+          } else {
+            throw new Error('Prognoos pole saadaval');
+          }
+        } else {
+          // Current weather
+          const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m&timezone=auto`
+          );
+          
+          if (!response.ok) {
+            throw new Error('Ilmaandmete laadimine ebaõnnestus');
+          }
+          
+          const data = await response.json();
+          
+          setWeather({
+            temperature: Math.round(data.current.temperature_2m),
+            weatherCode: data.current.weather_code,
+            windSpeed: Math.round(data.current.wind_speed_10m),
+            humidity: data.current.relative_humidity_2m,
+          });
         }
-        
-        const data = await response.json();
-        
-        setWeather({
-          temperature: Math.round(data.current.temperature_2m),
-          weatherCode: data.current.weather_code,
-          windSpeed: Math.round(data.current.wind_speed_10m),
-          humidity: data.current.relative_humidity_2m,
-        });
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Tekkis viga');
       } finally {
@@ -101,7 +129,7 @@ const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClic
     };
 
     fetchWeather();
-  }, [location]);
+  }, [location, targetDate]);
 
   if (loading) {
     return (
@@ -127,6 +155,7 @@ const Weather: React.FC<WeatherProps> = ({ location, locationName, onWeatherClic
     <div className={`weather-widget ${timeOfDay}`} onClick={onWeatherClick}>
       <div className="weather-header">
         <h3 className="weather-location">{locationName}</h3>
+        {targetDate && <span className="weather-forecast-label">Prognoos</span>}
       </div>
       
       <div className="weather-main">

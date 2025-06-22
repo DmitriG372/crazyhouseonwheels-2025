@@ -43,7 +43,6 @@ const MapCenterHandler: React.FC<{ center: [number, number], zoom: number }> = (
 };
 
 const MapView: React.FC<MapViewProps> = ({ days, onDayClick, currentLocation }) => {
-  const [showCurrentLocation, setShowCurrentLocation] = useState(true);
   const [mapKey, setMapKey] = useState(0);
   
   // Calculate center point of all locations
@@ -58,6 +57,23 @@ const MapView: React.FC<MapViewProps> = ({ days, onDayClick, currentLocation }) 
   // Reset map view to show full route
   const resetMapView = () => {
     setMapKey(prev => prev + 1);
+  };
+
+  // Component to handle current location zoom
+  const CurrentLocationHandler: React.FC<{ location: [number, number] }> = ({ location }) => {
+    const map = useMap();
+    map.setView(location, 13);
+    return null;
+  };
+
+  const [showCurrentLocationView, setShowCurrentLocationView] = useState(false);
+
+  // Zoom to current location
+  const zoomToCurrentLocation = () => {
+    if (currentLocation) {
+      setShowCurrentLocationView(true);
+      setTimeout(() => setShowCurrentLocationView(false), 100);
+    }
   };
 
   // Create polyline coordinates
@@ -79,22 +95,37 @@ const MapView: React.FC<MapViewProps> = ({ days, onDayClick, currentLocation }) 
 
   return (
     <div className="map-view-container">
-      <button 
-        className="reset-view-btn"
-        onClick={resetMapView}
-        title="Näita kogu marsruuti"
-      >
-        🎯 Tsentreeri
-      </button>
+      <div className="map-controls">
+        <button 
+          className="map-control-btn reset-btn"
+          onClick={resetMapView}
+          title="Näita kogu marsruuti"
+        >
+          🗺️ Kogu marsruut
+        </button>
+        
+        {currentLocation && (
+          <button 
+            className="map-control-btn location-btn"
+            onClick={zoomToCurrentLocation}
+            title="Zoom minu asukohale"
+          >
+            📍 Minu asukoht
+          </button>
+        )}
+      </div>
       
       <MapContainer 
         key={mapKey}
-        center={center} 
-        zoom={5} 
+        center={showCurrentLocationView && currentLocation ? currentLocation : center} 
+        zoom={showCurrentLocationView ? 13 : 5} 
         className="main-map"
         scrollWheelZoom={true}
       >
-        <MapCenterHandler center={center} zoom={5} />
+        <MapCenterHandler center={showCurrentLocationView && currentLocation ? currentLocation : center} zoom={showCurrentLocationView ? 13 : 5} />
+        {showCurrentLocationView && currentLocation && (
+          <CurrentLocationHandler location={currentLocation} />
+        )}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -107,6 +138,19 @@ const MapView: React.FC<MapViewProps> = ({ days, onDayClick, currentLocation }) 
           weight={3}
           opacity={0.8}
         />
+        
+        {/* Current location marker */}
+        {currentLocation && (
+          <Marker position={currentLocation}>
+            <Popup>
+              <div className="marker-popup">
+                <h4>📍 Praegune asukoht</h4>
+                <p>GPS koordinaadid:</p>
+                <p className="coordinates">{currentLocation[0].toFixed(4)}, {currentLocation[1].toFixed(4)}</p>
+              </div>
+            </Popup>
+          </Marker>
+        )}
         
         {/* Day markers */}
         {days.map((day) => (
@@ -128,36 +172,6 @@ const MapView: React.FC<MapViewProps> = ({ days, onDayClick, currentLocation }) 
           </Marker>
         ))}
       </MapContainer>
-
-      {/* Current location mini map */}
-      {currentLocation && showCurrentLocation && (
-        <div className="current-location-container">
-          <button 
-            className="toggle-current-location"
-            onClick={() => setShowCurrentLocation(!showCurrentLocation)}
-          >
-            ✕
-          </button>
-          <MapContainer 
-            center={currentLocation} 
-            zoom={13} 
-            className="current-location-map"
-            zoomControl={false}
-            dragging={false}
-            scrollWheelZoom={false}
-            doubleClickZoom={false}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={currentLocation}>
-              <Popup>Praegune asukoht</Popup>
-            </Marker>
-          </MapContainer>
-          <div className="location-label">Praegune asukoht</div>
-        </div>
-      )}
     </div>
   );
 };

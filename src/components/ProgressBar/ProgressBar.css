@@ -6,6 +6,10 @@
   border-radius: var(--radius-lg);
   padding: 1rem 1.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  /* iPhone Safari fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .progress-header {

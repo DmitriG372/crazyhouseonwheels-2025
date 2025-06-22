@@ -2,6 +2,30 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.dashboard-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  z-index: -2;
+}
+
+.dashboard-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
 }
 
 .dashboard-header {
@@ -47,6 +71,12 @@
   opacity: 1;
 }
 
+.header-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.info-btn,
 .admin-btn {
   background: rgba(255, 255, 255, 0.2);
   color: white;
@@ -59,6 +89,7 @@
   backdrop-filter: blur(10px);
 }
 
+.info-btn:hover,
 .admin-btn:hover {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
@@ -94,8 +125,35 @@
 .dashboard-left {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   height: 100%;
+  gap: 1.5rem;
+}
+
+.progress-timers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+  transition: all 0.5s ease;
+}
+
+.progress-timers.trip-active {
+  grid-template-columns: 1fr;
+}
+
+.progress-expanded {
+  animation: expandIn 0.5s ease-out;
+}
+
+@keyframes expandIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .dashboard-right {
@@ -116,6 +174,10 @@
   
   .dashboard-right {
     position: static;
+  }
+  
+  .progress-timers {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -138,6 +200,13 @@
     font-size: 1rem;
   }
   
+  .header-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .info-btn,
   .admin-btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -149,5 +218,18 @@
   
   .map-section {
     margin-bottom: 1.5rem;
+  }
+}
+
+/* iPhone Safari specific fixes for flicker */
+@supports (-webkit-touch-callout: none) {
+  .dashboard-header,
+  .progress-container,
+  .day-selector-container,
+  .weather-widget,
+  .stat-card {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
   }
 }

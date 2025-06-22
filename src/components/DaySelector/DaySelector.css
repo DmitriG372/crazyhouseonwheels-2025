@@ -9,6 +9,10 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  /* iPhone Safari fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .day-selector-container h3 {

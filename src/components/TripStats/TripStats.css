@@ -43,6 +43,10 @@
   opacity: 0;
   position: relative;
   overflow: hidden;
+  /* iPhone Safari fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .stat-card::before {
@@ -229,5 +233,20 @@
   
   .stat-label {
     font-size: 0.8rem;
+  }
+}
+
+/* iPhone Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .stat-card::before {
+    display: none; /* Remove pseudo-element animations on iOS */
+  }
+  
+  .stat-card {
+    transition: transform 0.2s ease; /* Shorter transition */
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px); /* Reduced hover effect */
   }
 }

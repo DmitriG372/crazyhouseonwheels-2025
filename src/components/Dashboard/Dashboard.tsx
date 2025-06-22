@@ -7,6 +7,9 @@ import DaySelector from '../DaySelector/DaySelector';
 import DayView from '../DayView/DayView';
 import AdminPanel from '../Admin/AdminPanel';
 import TripStats from '../TripStats/TripStats';
+import LocationInfo from '../LocationInfo/LocationInfo';
+import InfoModal from '../InfoModal/InfoModal';
+import CountdownTimer from '../CountdownTimer/CountdownTimer';
 import { Trip } from '../../types/Trip';
 import './Dashboard.css';
 
@@ -21,6 +24,7 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
   const [showDayView, setShowDayView] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showWeatherModal, setShowWeatherModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
   const [locationName, setLocationName] = useState<string>('Sinu asukoht');
 
@@ -30,6 +34,12 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
     const diffTime = today.getTime() - startDate.getTime();
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
     return Math.max(1, Math.min(diffDays, trip.days.length));
+  };
+
+  const isTripStarted = () => {
+    const today = new Date();
+    const startDate = new Date(trip.startDate);
+    return today >= startDate;
   };
 
   const currentDay = getCurrentDay();
@@ -118,6 +128,11 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
 
   return (
     <div className="dashboard">
+      <div 
+        className="dashboard-background" 
+        style={{ backgroundImage: 'url(/pilt.jpg)' }}
+      ></div>
+      <div className="dashboard-overlay"></div>
       <header className="dashboard-header">
         <div className="container">
           <div className="header-content">
@@ -133,12 +148,20 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
                 <span>🐕 Vaflja</span>
               </div>
             </div>
-            <button 
-              className="admin-btn"
-              onClick={() => setShowAdminPanel(true)}
-            >
-              ⚙️ Admin
-            </button>
+            <div className="header-buttons">
+              <button 
+                className="info-btn"
+                onClick={() => setShowInfoModal(true)}
+              >
+                ℹ️ Info
+              </button>
+              <button 
+                className="admin-btn"
+                onClick={() => setShowAdminPanel(true)}
+              >
+                ⚙️ Admin
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -163,13 +186,21 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
 
           <div className="dashboard-grid">
             <div className="dashboard-left">
-              <div className="fade-in" style={{animationDelay: '0.2s'}}>
-                <ProgressBar 
-                  currentDay={currentDay}
-                  totalDays={trip.days.length}
-                  startDate={trip.startDate}
-                  endDate={trip.endDate}
-                />
+              <div className={`progress-timers ${isTripStarted() ? 'trip-active' : ''}`}>
+                {!isTripStarted() && (
+                  <div className="fade-in" style={{animationDelay: '0.2s'}}>
+                    <CountdownTimer targetDate={trip.startDate} />
+                  </div>
+                )}
+                
+                <div className={`fade-in ${isTripStarted() ? 'progress-expanded' : ''}`} style={{animationDelay: '0.3s'}}>
+                  <ProgressBar 
+                    currentDay={currentDay}
+                    totalDays={trip.days.length}
+                    startDate={trip.startDate}
+                    endDate={trip.endDate}
+                  />
+                </div>
               </div>
               
               <div className="fade-in" style={{animationDelay: '0.4s'}}>
@@ -183,8 +214,15 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
             </div>
 
             <div className="dashboard-right">
+              <div className="fade-in" style={{animationDelay: '0.6s'}}>
+                <LocationInfo 
+                  currentLocation={currentLocation}
+                  locationName={locationName}
+                />
+              </div>
+              
               {currentLocation && (
-                <div className="current-weather fade-in hover-lift" style={{animationDelay: '0.6s'}}>
+                <div className="current-weather fade-in hover-lift" style={{animationDelay: '0.7s'}}>
                   <Weather 
                     location={currentLocation} 
                     locationName={locationName}
@@ -220,6 +258,12 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
           location={currentLocation}
           locationName={locationName}
           onClose={() => setShowWeatherModal(false)}
+        />
+      )}
+
+      {showInfoModal && (
+        <InfoModal 
+          onClose={() => setShowInfoModal(false)}
         />
       )}
     </div>

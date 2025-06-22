@@ -14,6 +14,10 @@
   justify-content: space-between;
   transition: all 0.5s ease;
   cursor: pointer;
+  /* iPhone Safari fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .weather-widget:hover {
@@ -47,12 +51,23 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .weather-location {
   font-size: 1rem;
   color: var(--text-secondary);
   margin: 0;
+  font-weight: 500;
+}
+
+.weather-forecast-label {
+  font-size: 0.75rem;
+  background: rgba(112, 130, 56, 0.15);
+  color: #708238;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
   font-weight: 500;
 }
 

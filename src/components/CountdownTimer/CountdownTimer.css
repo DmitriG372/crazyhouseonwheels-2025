@@ -1,0 +1,144 @@
+.countdown-container {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s;
+}
+
+.countdown-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+.countdown-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.countdown-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.countdown-date {
+  color: #708238;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: var(--radius);
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.time-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #708238;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+.time-separator {
+  font-size: 1.5rem;
+  color: #708238;
+  opacity: 0.5;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+
+.trip-started {
+  text-align: center;
+  padding: 2rem;
+}
+
+.started-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.trip-started p {
+  color: #708238;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .countdown-display {
+    gap: 0.25rem;
+    padding: 0.75rem;
+  }
+  
+  .time-unit {
+    min-width: 50px;
+  }
+  
+  .time-value {
+    font-size: 1.5rem;
+  }
+  
+  .time-label {
+    font-size: 0.7rem;
+  }
+  
+  .time-separator {
+    font-size: 1.2rem;
+  }
+  
+  .countdown-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-display {
+    flex-wrap: wrap;
+    gap: 0.5rem 0.25rem;
+  }
+  
+  .time-unit:nth-child(5),
+  .time-unit:nth-child(7) {
+    display: none; /* Hide seconds on very small screens */
+  }
+  
+  .time-separator:last-of-type {
+    display: none;
+  }
+}
