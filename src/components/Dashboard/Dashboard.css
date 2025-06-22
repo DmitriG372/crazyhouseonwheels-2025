@@ -88,19 +88,20 @@
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .dashboard-left {
   display: flex;
   flex-direction: column;
-  height: 100%;
   gap: 1.5rem;
+  height: 100%;
 }
 
 .dashboard-right {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .current-weather h3 {

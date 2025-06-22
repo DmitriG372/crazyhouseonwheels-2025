@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Map from '../Map/Map';
+import MapView from '../MapView/MapView';
 import Weather from '../Weather/Weather';
 import WeatherModal from '../WeatherModal/WeatherModal';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import DaySelector from '../DaySelector/DaySelector';
 import DayView from '../DayView/DayView';
 import AdminPanel from '../Admin/AdminPanel';
+import TripStats from '../TripStats/TripStats';
 import { Trip } from '../../types/Trip';
 import './Dashboard.css';
 
@@ -145,10 +146,13 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
       <main className="dashboard-main">
         <div className="container">
           <div className="map-section fade-in hover-lift">
-            <Map 
+            <MapView 
               days={trip.days} 
               currentLocation={currentLocation} 
-              selectedDay={selectedDay}
+              onDayClick={(day) => {
+                setSelectedDay(day.dayNumber);
+                setShowDayView(true);
+              }}
             />
             {locationError && (
               <div className="location-error">
@@ -189,6 +193,10 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
                 </div>
               )}
             </div>
+          </div>
+
+          <div className="fade-in" style={{animationDelay: '0.8s'}}>
+            <TripStats trip={trip} />
           </div>
         </div>
       </main>
