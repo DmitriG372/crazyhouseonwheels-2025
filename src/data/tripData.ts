@@ -336,146 +336,209 @@ export const tripData: Trip = {
       date: "2025-07-03",
       dayNumber: 7,
       startLocation: {
-        name: "Nürburgring",
+        name: "Camping am Nürburgring",
         coordinates: [50.32066, 6.93777]
       },
       endLocation: {
-        name: "Eschwege",
-        coordinates: [51.191389, 10.068611]
+        name: "Illertissen",
+        coordinates: [48.2123, 10.0874]
       },
-      distance: "270 km",
-      duration: "3.5h",
+      distance: "350 km",
+      duration: "4h 15min",
       activities: [
-        { time: "09:00", description: "Jalutuskäik raja ääres" },
-        { time: "16:00", description: "Rent4Ring check-in" },
-        { time: "17:00", description: "Nürburgring sõit" },
-        { time: "19:00", description: "Start suunal Eschwege" },
-        { time: "22:30", description: "Saabumine KNAUS Campingpark" }
+        { time: "08:00", description: "Äratus, hommikusöök camperis" },
+        { time: "09:00-12:00", description: "Vaba aeg rajakompleksis (ring°werk muuseum, lasteala, jalutus)" },
+        { time: "12:15", description: "Lõuna Cockpit Restaurant (terrass koerasõbralik)" },
+        { time: "15:30", description: "Saabumine RSRNurburg / Rent4Ring kontorisse (registreerimine)" },
+        { time: "16:00", description: "Sõitjate briifing (kohustuslik)" },
+        { time: "17:00-18:00", description: "4 ringi instruktoriga Nürburgringi Nordschleifel" },
+        { time: "18:15-18:30", description: "Varustuse tagastus, suveniirid" },
+        { time: "18:30", description: "Tankimine + hall-vee tühjendus (ARAL Tankstelle Nürburgring)" },
+        { time: "18:45", description: "Start Illertisseni suunas (A61 → A6 → A7)" },
+        { time: "20:45", description: "Venitus + koerajalutus Rasthof Hohenlohe Süd (WC, mänguväljak)" },
+        { time: "22:45", description: "Saabumine Camping Illertissen (hiline iseteenindus-check-in)" },
+        { time: "23:00", description: "Õhtusöök camperis / Camper Lounge'i snäkk (avatud 23:30-ni)" },
+        { time: "23:30", description: "Jalgsiring Iller-kanali kaldal" },
+        { time: "00:00", description: "Magama (öörahu 22:00-07:00)" }
       ],
       stops: [
         { 
-          name: "Nürburgring", 
-          type: "rajasõit",
-          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Nürburgring"
+          name: "Rasthof Hohenlohe Süd", 
+          type: "venitus, WC, mänguväljak",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Rasthof+Hohenlohe+Süd"
+        },
+        { 
+          name: "Lidl Illertissen", 
+          type: "toidutäiendus",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Lidl+Reinthalstraße+10+Illertissen"
         }
       ],
       accommodation: {
-        name: "KNAUS Campingpark Eschwege",
-        address: "Am Werratalsee 2, 37269 Eschwege",
-        coordinates: [51.191389, 10.068611],
+        name: "Camping Illertissen",
+        address: "Dietenheimer Str. 91, 89257 Illertissen",
+        coordinates: [48.2123, 10.0874],
         contact: {
-          phone: "+49 5651 3388-83",
-          email: "eschwege@knauscamp.de",
-          website: "https://www.knauscamp.de/eschwege.html"
+          phone: "+49 7303 7888",
+          website: "https://www.camping-illertissen.de/"
         },
-        price: "~45 €/öö",
-        notes: ["Werratalsee järve kaldal"],
-        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=KNAUS+Campingpark+Eschwege"
+        price: "~32 € / öö (2 täisk. + 2 last + camper + elekter)",
+        amenities: ["Elekter", "Dušid", "Pesumasin", "Tasuta Wi-Fi", "Gassi-Wiese (koertele)", "Camper Lounge"],
+        notes: ["Hiline saabumine: Iseteenindus-kast, soovitatav ette helistada"],
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=48.2123,10.0874"
       },
       specialActivities: [
         {
           name: "Nürburgring rajasõit - Rent4Ring",
           address: "Antoniusweg 1a, 53520 Nürburg",
           time: "17:00–18:00",
-          description: "Check-in 16:00 (vähemalt 1h enne starti)",
+          description: "4 ringi instruktoriga Nürburgringi Nordschleifel",
           bookingReference: "#BK11714",
           website: "https://www.rent4ring.de/en/",
           coordinates: [50.3356, 6.9475]
         }
       ],
-      notes: ["Kaasa: Juhiluba, ID-kaart, krediitkaart"],
-      googleMapsUrl: "https://www.google.com/maps/dir/Nürburgring,+Nürburg,+Saksamaa/KNAUS+Campingpark+Eschwege,+Am+Werratalsee+2,+37269+Eschwege/"
+      notes: [
+        "Jälgi rajapäeval vedelike tarbimist. Juhil ja instruktoril on kohustuslik kanda kinniseid jalanõusid.",
+        "Tanki Nürburgringil paak täis, et säästa aega.",
+        "Illertisseni kämpingu Camper Lounge pakub hiliseid kergeid eineid."
+      ],
+      googleMapsUrl: "https://www.google.com/maps/dir/Camping+am+Nürburgring,+Kreisstraße+72,+53520+Müllenbach,+Germany/Camping+Illertissen,+Dietenheimer+Str.+91,+89257+Illertissen,+Germany/"
     },
     {
       id: 8,
       date: "2025-07-04",
       dayNumber: 8,
       startLocation: {
-        name: "Eschwege",
-        coordinates: [51.191389, 10.068611]
+        name: "Illertissen",
+        coordinates: [48.2123, 10.0874]
       },
       endLocation: {
-        name: "Poznań",
-        coordinates: [52.4036, 16.9842]
+        name: "Katowice",
+        coordinates: [50.2433, 19.0477]
       },
-      distance: "600 km",
-      duration: "8h",
+      distance: "780 km",
+      duration: "6h 45min + matk",
       activities: [
-        { time: "09:00", description: "Start Poznań suunas" },
-        { time: "12:00", description: "Lõunapaus Bolesławieci kandis" },
-        { time: "15:00", description: "Toidupood Leszno lähedal" },
-        { time: "17:30", description: "Saabumine Camping Malta" },
-        { time: "18:30", description: "Jalutuskäik Malta järve ääres" }
+        { time: "06:30", description: "Äratus & kiire hommikusöök" },
+        { time: "07:00", description: "Check-out → sõit Garmisch-Partenkirchen (155 km, ≈1 h 45 m)" },
+        { time: "08:45", description: "Parkimine Olympia-Skistadion (tasuline)" },
+        { time: "09:00", description: "Jalgsirada (25 min) Partnachklammi piletikassasse (pilet €7 + koer €2)" },
+        { time: "09:15-11:30", description: "Kanjoni läbimine & tagasi (∼2 km, 2 h)" },
+        { time: "11:40", description: "10 min sõit Camping Resort Zugspitze (dušš, veetäide, lõunasnäkk)" },
+        { time: "12:45", description: "Start Katowice suunas (625 km, ≈6 h 45 m)" },
+        { time: "15:30", description: "Venitus + tankimine 24-Autohof Wernberg-Köblitz" },
+        { time: "17:45", description: "Kiire kohvipaus Rozvadov Service Area (CZ)" },
+        { time: "19:15", description: "Tank + õhtusnäkk MOP Gorzyczki Orlen (PL)" },
+        { time: "20:30", description: "Saabumine Camping 215 Katowice (check-in kuni 22:00)" },
+        { time: "21:00", description: "Õhtusöök ja jalutuskäik Three Ponds Valley's" },
+        { time: "22:30", description: "Magama" }
       ],
       stops: [
         { 
-          name: "Bolesławiec", 
-          type: "lõunapaus",
-          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=McDonald's+Bolesławiec"
+          name: "Olympia-Skistadion parkla", 
+          type: "parkla",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=47.4755,11.1109"
         },
         { 
-          name: "Leszno", 
-          type: "toidupood",
-          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Lidl+Leszno"
+          name: "24-Autohof Wernberg-Köblitz", 
+          type: "tankimine, restoran, mänguväljak",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=24-Autohof+Wernberg-Köblitz"
+        },
+        { 
+          name: "MOP Gorzyczki Orlen", 
+          type: "tank + õhtusnäkk",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=MOP+Gorzyczki+Orlen"
         }
       ],
       accommodation: {
-        name: "Camping Malta",
-        address: "ul. Krańcowa 98, 61-036 Poznań",
-        coordinates: [52.4036, 16.9842],
+        name: "Camping 215 Katowice",
+        address: "ul. Trzech Stawów 23, 40-289 Katowice, PL",
+        coordinates: [50.2433, 19.0477],
         contact: {
-          phone: "+48 61 876 62 03",
-          email: "camping@malta.poznan.pl",
-          website: "http://www.campingmalta.poznan.pl/"
+          phone: "+48 32 256 12 20",
+          website: "http://camping.mosir.katowice.pl/"
         },
-        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Camping+Malta"
+        price: "Plats + pere ≈ 90 PLN; elekter +15 PLN",
+        amenities: ["Modernsed mugavused", "Asub looduspargis"],
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=50.2433,19.0477"
       },
-      googleMapsUrl: "https://www.google.com/maps/dir/Eschwege+→+Bolesławiec+→+Leszno+→+Camping+Malta+Poznań/"
+      specialActivities: [
+        {
+          name: "Partnachklamm",
+          address: "Graseck 4, 82467 Garmisch-Partenkirchen",
+          time: "09:15-11:30",
+          description: "Kanjoni läbimine",
+          website: "https://www.partnachklamm.de/",
+          coordinates: [47.4755, 11.1109]
+        }
+      ],
+      notes: [
+        "Partnachklamm: Võta kaasa veekindel jope ja taskulamp.",
+        "Pikk sõit: Jagage roolivahetusi iga 2-3 tunni tagant."
+      ],
+      googleMapsUrl: "https://www.google.com/maps/dir/Camping+Illertissen,+Dietenheimer+Str.+91,+89257+Illertissen,+Germany/Partnachklamm,+Graseck+4,+82467+Garmisch-Partenkirchen,+Germany/Camping+215,+ul.+Trzech+Stawów+23,+40-289+Katowice,+Poland/"
     },
     {
       id: 9,
       date: "2025-07-05",
       dayNumber: 9,
       startLocation: {
-        name: "Poznań",
-        coordinates: [52.4036, 16.9842]
+        name: "Katowice",
+        coordinates: [50.2433, 19.0477]
       },
       endLocation: {
         name: "Pasvalys",
         coordinates: [56.0589, 24.3994]
       },
-      distance: "600 km",
+      distance: "680 km",
       duration: "9h",
       activities: [
-        { time: "09:00", description: "Start Leedu suunas" },
-        { time: "12:30", description: "Lõuna Augustówi kandis" },
-        { time: "15:30", description: "Tankimine Leedu piiri lähedal" },
-        { time: "18:00", description: "Saabumine Pasvalys" }
+        { time: "07:30", description: "Äratus, hommikusöök" },
+        { time: "08:00", description: "Check-out ja start Leedu suunas" },
+        { time: "11:00", description: "Venitus + kohvipaus MOP Bolimów Północ (S8)" },
+        { time: "13:30", description: "Tankimine & lõunapaus MOP Zambrów Zachód (S8; Orlen + KFC)" },
+        { time: "16:30", description: "Toidupood + jalutus Lidl Suwałki" },
+        { time: "17:15", description: "Piiriületus Budzisko / Kalvarija" },
+        { time: "19:00", description: "Saabumine Pasvalys Camping, check-in" },
+        { time: "20:00", description: "Õhtusöök camperis / väligrillil" },
+        { time: "21:00", description: "Lõõgastus pargis ja järve ääres" },
+        { time: "22:30", description: "Magama" }
       ],
       stops: [
         { 
-          name: "Augustów", 
-          type: "lõunapaus",
-          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=McDonald's+Augustów"
+          name: "MOP Bolimów Północ", 
+          type: "WC, mänguväljak, koerterada",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=MOP+Bolimów+Północ"
         },
         { 
-          name: "Leedu piir", 
-          type: "tankimine ja pood",
-          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Maxima+near+Lithuanian+border"
+          name: "MOP Zambrów Zachód", 
+          type: "Orlen + KFC",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=MOP+Zambrów+Zachód"
+        },
+        { 
+          name: "Lidl Suwałki", 
+          type: "toidutäiendus, roheala",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Lidl+Suwałki"
+        },
+        { 
+          name: "MOP Kalvarija", 
+          type: "esimesed teenused Leedus",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=MOP+Kalvarija"
         }
       ],
       accommodation: {
         name: "Camping & Camper Place Pasvalys",
-        address: "Dvareliškių g., 39161 Pasvalys",
+        address: "Dvareliškių g., 39161 Pasvalys, Leedu",
         coordinates: [56.0589, 24.3994],
         contact: {
           phone: "+370 672 22270",
           website: "https://pasvalyscamping.com/"
         },
-        notes: ["Google 4.7/5", "Booking.com 8.9/10", "Ideaalne rahulikuks puhkuseks enne koju jõudmist"],
-        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Camping+&+Camper+Place+Pasvalys"
+        price: "Camperplats ~10–20 €/öö (+ elekter)",
+        notes: ["Google 4.7/5", "Camping.info 5.0/5"],
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=56.0589,24.3994"
       },
-      googleMapsUrl: "https://www.google.com/maps/dir/Poznań+→+Augustów+→+Leedu+piir+→+Pasvalys+Camping/"
+      googleMapsUrl: "https://www.google.com/maps/dir/Camping+215,+ul.+Trzech+Stawów+23,+40-289+Katowice,+Poland/Camping+&+Camper+Place+Pasvalys,+Dvareliškių+g.,+39161+Pasvalys,+Lithuania/"
     },
     {
       id: 10,
@@ -486,38 +549,53 @@ export const tripData: Trip = {
         coordinates: [56.0589, 24.3994]
       },
       endLocation: {
-        name: "Tallinn",
-        coordinates: [59.437, 24.7536]
+        name: "Käokella tee 1-1/2, Tallinn",
+        coordinates: [59.39, 24.67]
       },
-      distance: "480 km",
+      distance: "530 km",
       duration: "7h",
       activities: [
-        { time: "09:00", description: "Start Tallinna suunas" },
-        { time: "11:30", description: "Paus Jēkabpilsi kandis" },
-        { time: "14:00", description: "Lõuna Valgas" },
-        { time: "16:30", description: "Saabumine Tallinnasse" },
-        { time: "18:00", description: "Camperi puhastus" },
-        { time: "20:00", description: "Ettevalmistus tagastuseks" }
+        { time: "08:00", description: "Äratus, hommikusöök" },
+        { time: "09:00", description: "Check-out; veepaakide tühjendus" },
+        { time: "09:15", description: "Start Tallinnasse (Via Baltica E67)" },
+        { time: "10:45", description: "Paus Neste Jēkabpils" },
+        { time: "13:00", description: "Lõuna Circle K Valka/Valga" },
+        { time: "13:30", description: "Piiriületus Eestisse" },
+        { time: "15:45", description: "Kohvipaus Olerex Puhu Risti" },
+        { time: "18:00", description: "Saabumine koju, Käokella tee 1-1/2" },
+        { time: "18:15", description: "Kerge õhtusöök kodus" },
+        { time: "Õhtu", description: "Vaba aeg, puhkus" }
       ],
       stops: [
         { 
-          name: "Jēkabpils", 
+          name: "Neste Jēkabpils", 
           type: "paus",
           googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Neste+Jēkabpils"
         },
         { 
-          name: "Valga", 
+          name: "Circle K Valka/Valga", 
           type: "lõuna",
           googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Circle+K+Valga"
+        },
+        { 
+          name: "Olerex Puhu Risti", 
+          type: "kohvipaus",
+          googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Olerex+Puhu+Risti"
         }
       ],
       accommodation: {
         name: "Kodus",
-        address: "Tallinn",
-        coordinates: [59.437, 24.7536]
+        address: "Käokella tee 1-1/2, Tallinn, EE",
+        coordinates: [59.39, 24.67]
       },
-      notes: ["Camperi puhastus ja kontroll", "Ettevalmistus tagastuseks"],
-      googleMapsUrl: "https://www.google.com/maps/dir/Pasvalys+→+Jēkabpils+→+Valga+→+Tallinn/"
+      notes: [
+        "Järgmisel päeval (07.07.2025): Camperi tagastus",
+        "08:15-08:45: Camperi sisepuhastus",
+        "08:45-09:00: Paak täis & AdBlue kontroll (Neste Laagri)",
+        "09:15: Rendikontorisse tagastus",
+        "Puhastusnimekiri: Paak täis, Hall/must vesi tühjaks, WC kassett puhastatud, Isiklikud esemed eemaldatud, Salong pühitud, Väliskontroll & fotod"
+      ],
+      googleMapsUrl: "https://www.google.com/maps/dir/Camping+&+Camper+Place+Pasvalys,+Dvareliškių+g.,+39161+Pasvalys,+Lithuania/Käokella+tee+1,+Tallinn,+Estonia/"
     }
   ]
 };
