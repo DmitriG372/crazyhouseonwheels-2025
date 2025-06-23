@@ -20,6 +20,8 @@
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .weather-widget:hover {
@@ -121,6 +123,11 @@
     perspective: 1000;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    /* Stronger anti-flicker for iPhone */
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   
   .weather-icon.sun-rotating {
@@ -128,6 +135,18 @@
     animation: sunRotate 8s linear infinite;
     -webkit-transform-origin: center center;
     transform-origin: center center;
+  }
+  
+  /* Disable all animations on iOS to prevent flicker */
+  @media (max-width: 768px) {
+    .weather-icon.sun-rotating {
+      animation: none;
+      -webkit-animation: none;
+    }
+    
+    .weather-widget:hover {
+      transform: translateZ(0);
+    }
   }
 }
 

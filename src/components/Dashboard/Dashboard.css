@@ -238,20 +238,16 @@
   }
 }
 
-/* Family photo button - hidden in bottom right corner */
+/* Family photo button - hidden transparent circle in bottom right corner */
 .family-photo-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
   width: 50px;
   height: 50px;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
-  font-size: 20px;
+  background: transparent;
   cursor: pointer;
   z-index: 1000;
   transition: all 0.3s ease;
@@ -264,7 +260,7 @@
 .family-photo-btn:hover {
   opacity: 0.8;
   transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .family-photo-btn:active {

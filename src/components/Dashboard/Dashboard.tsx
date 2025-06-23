@@ -146,7 +146,6 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
         onTouchStart={() => setShowFamilyPhoto(true)}
         onTouchEnd={() => setShowFamilyPhoto(false)}
       >
-        👨‍👩‍👧‍👧
       </button>
       <header className={`dashboard-header ${showFamilyPhoto ? 'hidden' : ''}`}>
         <div className="container">
