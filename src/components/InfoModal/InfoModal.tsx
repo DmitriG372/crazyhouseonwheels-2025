@@ -43,7 +43,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
             <div className="info-content">
               <div className="info-section">
                 <h3>🚐 TripINFO – Meelespea</h3>
-                <p className="info-subtitle">Salvesta see vaheleht telefoni ja prindi 1 eksemplar camperi kindalaekasse. Kõik punktid on kohandatud 27.06 – 06.07 marsruudile (EE → DE → EE) ning &lt;3,5 t matkaautole.</p>
+                <p className="info-subtitle">Salvesta see vaheleht telefoni ja prindi 1 eksemplar camperi kindalaekasse. Kõik punktid on kohandatud 27.06 – 06.07 marsruudile (EE → LT → PL → DE → EE) ning &lt;3,5 t matkaautole.</p>
               </div>
 
               <div className="info-section">
@@ -60,10 +60,10 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
               <div className="info-section">
                 <h4>🔧 2. Camper & tehniline hooldus</h4>
                 <ul>
-                  <li><strong>Kütus:</strong> täis paak Nürburgringi ARAL-ist; tanki uuesti Katowice Orlenis ja enne Tallinna Neste Laagris</li>
+                  <li><strong>Kütus:</strong> täis paak enne sõitu; tanki järgmiseks Poznańis ja enne Tallinna Neste Laagris</li>
                   <li><strong>Vesi / jäätmed:</strong> Hall vesi iga 2.–3. päev; must vesi <strong>iga päev</strong> kui täituv ≥ ¾</li>
-                  <li><strong>Joogivesi:</strong> ära võta Tšehhi tanklatest; vali Camping Resort Zugspitze, Katowice 215, Pasvalys</li>
-                  <li><strong>Gaas:</strong> 1 varuballoon (11 kg) + adapterid D/PL/CZ</li>
+                  <li><strong>Joogivesi:</strong> vali Camping Malta Poznań, Camping Heider Bergsee, Pasvalys</li>
+                  <li><strong>Gaas:</strong> 1 varuballoon (11 kg) + adapterid D/PL</li>
                   <li><strong>Öörahu:</strong> 22 – 07 DE & PL kämpingutes; hiline saabumine → "self-check-in" kast, vaikne režiim</li>
                 </ul>
               </div>
@@ -71,8 +71,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
               <div className="info-section">
                 <h4>🚗 3. Liiklus & teemaksud</h4>
                 <ul>
-                  <li><strong>Kiiruspiirangud</strong> (camper &lt;3,5 t): EE/LV/LT 90; PL 120 (S-teed) / 140 (A-teed); CZ 130; DE "Richtgeschwindigkeit" 100 – 120</li>
-                  <li><strong>Tööpäeva tipptunnid:</strong> PL A2 & S8 15 – 18; DE A9 Nürnberg-München 07 – 09 ja 16 – 19</li>
+                  <li><strong>Kiiruspiirangud</strong> (camper &lt;3,5 t): EE/LV/LT 90; PL 120 (S-teed) / 140 (A-teed); DE "Richtgeschwindigkeit" 100 – 120</li>
+                  <li><strong>Tööpäeva tipptunnid:</strong> PL A2 Poznań-Berlin 15 – 18; DE A4 Erfurt-Frankfurt 07 – 09 ja 16 – 19</li>
                   <li><strong>Puhkepausid:</strong> iga 2–2,5 h (lapsed & koerad venitus + WC)</li>
                 </ul>
               </div>
@@ -81,8 +81,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
                 <h4>👥 Laste meelespea (Gloria & Ariana)</h4>
                 <ul>
                   <li><strong>Autosõit:</strong> Kindel turvavöö, lauamäng "Reisi ümber Euroopa", iga 2 h venitus</li>
-                  <li><strong>Phantasialand:</strong> Kuiv varusärk veesõitude järel; kokkusaamispunkt <strong>Wuze Town</strong> sildi all kell 13 & 16</li>
-                  <li><strong>Partnachklamm:</strong> Veekindel jakk + pealamp (pimedad galeriiikohad)</li>
+                  <li><strong>Wieliczka:</strong> Mugavad jalatsid soolakaevanduses käimiseks</li>
+                  <li><strong>Soojakad riided:</strong> Õhtuti võib olla jahe, eriti Nürburgringil ja Eschwege järvel</li>
                   <li><strong>Õhtukämping:</strong> Ujumisosad: Malta järv, Heider Bergsee, Pasvalys – alati vanematega koos</li>
                 </ul>
               </div>
@@ -93,7 +93,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
                   <li><strong>Pass + kiip + marutaudi vaktsiin</strong> – kontrolli kuupäevad, hoia pass salongi taskus</li>
                   <li><strong>Autosse:</strong> jahutusmatt + veepudel; aknatsoon 21 °C maks (kasuta ClimateControl ventilaatorit)</li>
                   <li><strong>Jalutusnorm:</strong> minimaalselt 3×15 min + pikk 30 min õhtul</li>
-                  <li><strong>Rihmareeglid:</strong> DE & CZ rahvuspargid – ≤ 2 m rihm; PL kiirteetanklad – <em>alati</em> rihmas</li>
+                  <li><strong>Rihmareeglid:</strong> DE rahvuspargid – ≤ 2 m rihm; PL kiirteetanklad – <em>alati</em> rihmas</li>
                 </ul>
               </div>
             </div>
@@ -125,13 +125,6 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
                     </div>
                   </div>
                   
-                  <div className="app-card" onClick={() => openAppStore('e-Dalnice')}>
-                    <div className="app-icon">🇨🇿</div>
-                    <div className="app-info">
-                      <h5>e-Dalnice</h5>
-                      <p>Tšehhi kiirtee vinjett D5</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -200,7 +193,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
                     <div className="app-icon">💰</div>
                     <div className="app-info">
                       <h5>Revolut</h5>
-                      <p>Valuuta-kaardid PLN/CZK</p>
+                      <p>Valuuta-kaardid PLN/EUR</p>
                     </div>
                   </div>
                   
@@ -237,7 +230,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
                     <div className="app-icon">🥾</div>
                     <div className="app-info">
                       <h5>AllTrails</h5>
-                      <p>Partnachklamm matkarajad, offline</p>
+                      <p>Matkarajad Nürburgringi ümbruses</p>
                     </div>
                   </div>
                 </div>
@@ -246,7 +239,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ onClose }) => {
               <div className="info-note">
                 <h4>💡 Ettevalmistus:</h4>
                 <ol>
-                  <li>Lae alla e-TOLL PL, e-Dalnice ja Autopay juba kodus</li>
+                  <li>Lae alla e-TOLL PL ja Autopay juba kodus</li>
                   <li>Sisesta camperi reg-number Wi-Fi-s</li>
                   <li>Salvesta offline-kaardid Google Maps'is</li>
                   <li>Märgi Park4Night'is ära valitud stellplatzid</li>

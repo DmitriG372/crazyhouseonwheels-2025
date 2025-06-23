@@ -21,10 +21,8 @@ const TripStats: React.FC<TripStatsProps> = ({ trip }) => {
     countries.add('🇪🇪 Eesti'); // Start and end
     countries.add('🇱🇻 Läti'); // Via Baltica route through Latvia
     countries.add('🇱🇹 Leedu'); // Pasvalys
-    countries.add('🇵🇱 Poola'); // Katowice 
-    countries.add('🇨🇿 Tšehhi'); // Through Czech Republic (stops mentioned)
-    countries.add('🇦🇹 Austria'); // Garmisch-Partenkirchen area
-    countries.add('🇩🇪 Saksamaa'); // Nürburgring, Illertissen
+    countries.add('🇵🇱 Poola'); // Poznań
+    countries.add('🇩🇪 Saksamaa'); // Nürburgring, Eschwege
 
     // Count special activities
     const specialActivities = trip.days.reduce((count, day) => {

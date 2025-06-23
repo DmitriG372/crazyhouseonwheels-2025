@@ -141,9 +141,9 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
               <p>Pere reisipäevik ja marsruudi jälgija</p>
               <div className="family-list">
                 <span>👨‍💻 Dima</span>
-                <span>👩‍🎨 Maria</span>
-                <span>🤸‍♀️ Ariana</span>
-                <span>🎨 Gloria</span>
+                <span>😈 Maria</span>
+                <span>🎾 Ariana</span>
+                <span>📹 Gloria</span>
                 <span>🐶 Sanja</span>
                 <span>🐕 Vaflja</span>
               </div>
