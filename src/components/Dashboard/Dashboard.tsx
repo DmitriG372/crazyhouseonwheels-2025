@@ -10,6 +10,7 @@ import TripStats from '../TripStats/TripStats';
 import LocationInfo from '../LocationInfo/LocationInfo';
 import InfoModal from '../InfoModal/InfoModal';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
+import OfflineIndicator from '../OfflineIndicator/OfflineIndicator';
 import { Trip } from '../../types/Trip';
 import './Dashboard.css';
 
@@ -27,6 +28,7 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
   const [locationName, setLocationName] = useState<string>('Sinu asukoht');
+  const [showFamilyPhoto, setShowFamilyPhoto] = useState(false);
 
   const getCurrentDay = () => {
     const today = new Date();
@@ -128,12 +130,25 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
 
   return (
     <div className="dashboard">
+      <OfflineIndicator />
       <div 
         className="dashboard-background" 
         style={{ backgroundImage: 'url(/pilt.jpg)' }}
       ></div>
-      <div className="dashboard-overlay"></div>
-      <header className="dashboard-header">
+      <div className={`dashboard-overlay ${showFamilyPhoto ? 'hidden' : ''}`}></div>
+      
+      {/* Hidden family photo button */}
+      <button 
+        className="family-photo-btn"
+        onMouseDown={() => setShowFamilyPhoto(true)}
+        onMouseUp={() => setShowFamilyPhoto(false)}
+        onMouseLeave={() => setShowFamilyPhoto(false)}
+        onTouchStart={() => setShowFamilyPhoto(true)}
+        onTouchEnd={() => setShowFamilyPhoto(false)}
+      >
+        👨‍👩‍👧‍👧
+      </button>
+      <header className={`dashboard-header ${showFamilyPhoto ? 'hidden' : ''}`}>
         <div className="container">
           <div className="header-content">
             <div className="header-text">
@@ -166,7 +181,7 @@ const Dashboard: React.FC<DashboardProps> = ({ trip: initialTrip }) => {
         </div>
       </header>
 
-      <main className="dashboard-main">
+      <main className={`dashboard-main ${showFamilyPhoto ? 'hidden' : ''}`}>
         <div className="container">
           <div className="map-section fade-in hover-lift">
             <MapView 

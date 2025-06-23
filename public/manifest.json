@@ -1,11 +1,18 @@
 {
   "short_name": "CHOW2025",
   "name": "CrazyHouseOnWheels2025",
+  "description": "Meie uskumatu reisiplaan 2025",
   "icons": [
     {
       "src": "bus-logo.svg",
       "type": "image/svg+xml",
-      "sizes": "any"
+      "sizes": "any",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "bus-favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "32x32"
     },
     {
       "src": "favicon.ico",
@@ -13,8 +20,12 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait-primary",
+  "theme_color": "#1976d2",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "lang": "et",
+  "categories": ["travel", "lifestyle"]
 }
