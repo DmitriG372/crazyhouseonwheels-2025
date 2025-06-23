@@ -18,11 +18,21 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .weather-widget:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Disable hover effects on touch devices to prevent flicker */
+@media (hover: none) {
+  .weather-widget:hover {
+    transform: translateZ(0);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .weather-widget.day {
@@ -97,10 +107,27 @@
 
 @keyframes sunRotate {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateZ(0);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+/* iPhone specific fixes for weather widget animations */
+@supports (-webkit-touch-callout: none) {
+  .weather-widget {
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  
+  .weather-icon.sun-rotating {
+    -webkit-animation: sunRotate 8s linear infinite;
+    animation: sunRotate 8s linear infinite;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
   }
 }
 
